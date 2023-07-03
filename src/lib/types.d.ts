@@ -11,3 +11,11 @@ export interface Post {
   website: string;
   location: GeoPoint;
 }
+
+export interface PostBlueprint {
+  title: string;
+  discribtion: string;
+
+  telephone: string;
+  website: string;
+}
