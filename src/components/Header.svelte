@@ -8,6 +8,7 @@
   import { ifElse, pipe } from "ramda";
   import { onMount } from "svelte";
   import { auth } from "$lib/firebase";
+  import signOut from "$lib/signOut";
 
   let hidden = false;
 
@@ -48,9 +49,26 @@
   <h1 class="btn btn-ghost mr-auto">Talk A Hike</h1>
 
   <User {auth} let:user>
-    <img src={user.photoURL} alt="" class="rounded-full h-full" />
-    <button slot="signedOut" class="btn btn-ghost" on:click={signIn}
-      >sign up</button
-    >
+    <details class="dropdown dropdown-end h-full">
+      <summary>
+        <img src={user.photoURL} alt="" class="rounded-full h-12" />
+      </summary>
+      <ul class="p-2 shadow dropdown-content bg-base-100 rounded-box w-max">
+        <button class="btn btn-error" on:click={signOut}>sign out</button>
+      </ul>
+    </details>
+
+    <button slot="signedOut" class="btn btn-ghost" on:click={signIn}>
+      sign up
+    </button>
   </User>
 </header>
+
+<style>
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

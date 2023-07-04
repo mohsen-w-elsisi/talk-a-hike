@@ -6,7 +6,7 @@
   const posts = collectionStore<Post>(db, "posts");
 </script>
 
-<main class="p-4">
+<main class="p-4 grid gap-4">
     {#each $posts as post}
       <article class="card bg-base-200 shadow-md">
         <div class="card-body">
