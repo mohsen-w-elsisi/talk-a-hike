@@ -2,14 +2,17 @@
   import FeatureCard from "./FeatureCard.svelte";
 
   import signIn from "$lib/signIn";
+  
   import user from "$lib/user";
   import { push } from "svelte-spa-router";
+  import Background from "./Background.svelte";
 
   $: if ($user) push("#/feed");
 </script>
 
-<section class="hero min-h-screen">
-  <div class="hero-content flex-col">
+<section class="hero min-h-screen bg-black">
+  <Background />
+  <div class="hero-content flex-col text-black">
     <h1 class="text-center text-4xl sm:text-5xl">Find Your Next Adventure</h1>
 
     <p class="sm:text-3xl text-2xl max-w-lg text-center">
@@ -20,7 +23,7 @@
   </div>
 </section>
 
-<section class="flex flex-col items-center min-h-screen">
+<section class="flex flex-col items-center min-h-screen bg-black">
   <FeatureCard title="Discover">
     talk a hike let’s you discover places you’d absolutely love traveling to,
     but these aren’t boring places like luxury spas and hotels, not at all. Hear
