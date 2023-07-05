@@ -1,7 +1,8 @@
 <script lang="ts">
+  import ImageIcon from "$icons/ImageIcon.svg";
   import { isNil, not } from "ramda";
 
-  let selectedImage: string;
+  export let selectedImage: string = undefined;
   let selectedFiles: FileList;
 
   $: if (not(isNil(selectedFiles))) {
@@ -13,11 +14,23 @@
 
 <input
   type="file"
+  id="img-upload"
   bind:files={selectedFiles}
   accept="image/png, image/jpeg"
-  class="file-input file-input-primary"
+  class="hidden"
 />
 
 {#if selectedImage}
-  <img src={selectedImage} class="rounded-lg" />
+  <label
+    for="img-upload"
+    class="sm:max-h-96 aspect-[4/3] bg-center bg-cover"
+    style="background-image: url({selectedImage});"
+  />
+{:else}
+  <label
+    for="img-upload"
+    class="w-full sm:aspect-[10/3] aspect-[4/3] grid place-items-center bg-gray-600"
+  >
+    <img src={ImageIcon} alt="" class="h-[70%]" />
+  </label>
 {/if}

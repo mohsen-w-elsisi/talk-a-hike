@@ -1,7 +1,6 @@
 <script lang="ts">
   export let value: string = "";
   export let placeholder: string;
-  export let XLarge = false;
 
   let textArea: HTMLTextAreaElement;
 
@@ -12,7 +11,7 @@
 </script>
 
 <textarea
-  class="textarea {XLarge ? 'text-6xl ' : 'textarea-primary'}  h-12"
+  class="textarea textarea-primary h-12"
   {placeholder}
   bind:this={textArea}
   bind:value

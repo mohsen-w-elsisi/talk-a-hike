@@ -15,6 +15,7 @@
   const isOnHomePage = () => $loc.location == "/";
 
   let hidden = isOnHomePage();
+  $: hidden = $loc.location == "/"
 
   const hide = () => (hidden = true);
   const show = () => (hidden = false);
