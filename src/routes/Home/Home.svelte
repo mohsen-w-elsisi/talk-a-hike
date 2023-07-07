@@ -2,11 +2,12 @@
   import FeatureCard from "./FeatureCard.svelte";
 
   import signIn from "$lib/signIn";
-  
+
   import user from "$lib/user";
   import { push } from "svelte-spa-router";
   import Background from "./Background.svelte";
 
+  // routes to feeds if logged in
   $: if ($user) push("#/feed");
 </script>
 
@@ -51,7 +52,8 @@
 <section class="hero h-screen">
   <div class="hero-content flex-col">
     <h2 class="text-center text-4xl sm:text-5xl">aren't you convinced yet?</h2>
-    <button class="btn btn-primary" on:click={signIn}>log in with google</button
-    >
+    <button class="btn btn-primary" on:click={signIn}>
+      log in with google
+    </button>
   </div>
 </section>

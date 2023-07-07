@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="absolute top-0 bottom-0 right-0 left-0 flex flex-col justify-end bg-cyan-200"
+  class="absolute top-0 bottom-0 right-0 left-0 flex flex-col justify-end bg-sky-300"
 >
   <img src={illustration} alt="" />
 </div>
