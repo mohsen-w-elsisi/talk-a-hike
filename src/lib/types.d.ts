@@ -10,8 +10,6 @@ export interface Post {
   telephone: string;
   website: string;
   location: GeoPoint;
-
-  thumbnailUrl: string;
 }
 
 export interface PostBlueprint {
@@ -21,5 +19,5 @@ export interface PostBlueprint {
   telephone: string;
   website: string;
 
-  thumbnailUrl: string;
+  imageUrl: string;
 }

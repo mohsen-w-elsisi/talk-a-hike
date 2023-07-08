@@ -1,28 +1,34 @@
 <script lang="ts">
-  import { storage } from "$lib/firebase";
+  import thumbnailRefTo from "$lib/thumbnailRefTo";
   import type { Post } from "$lib/types";
-  import { getBytes, ref } from "firebase/storage";
+  import { getBytes } from "firebase/storage";
+  import { andThen, pipe } from "ramda";
 
   export let post: Post;
 
-  let image: HTMLImageElement;
+  const { title, discribtion } = post;
 
-  const { title, discribtion, thumbnailUrl } = post;
-
-  const fetchthumbnail = () => getBytes(ref(storage, thumbnailUrl));
+  const fetchthumbnail = pipe(
+    () => title,
+    thumbnailRefTo,
+    getBytes,
+  );
 
   const blobFromArrayBuffer = (buffer: ArrayBuffer) => new Blob([buffer]);
 
-  fetchthumbnail()
-    .then(blobFromArrayBuffer)
-    .then(URL.createObjectURL)
-    .then(url => image.src = url);
+  const imageSrcUrl = pipe(
+    fetchthumbnail,
+    andThen(blobFromArrayBuffer),
+    andThen(URL.createObjectURL)
+  );
 </script>
 
 <article class="card bg-base-200 shadow-md">
-  <figure>
-    <img alt="" bind:this={image} />
-  </figure>
+  {#await imageSrcUrl() then url}
+    <figure>
+      <img src={url} alt="" />
+    </figure>
+  {/await}
 
   <div class="card-body">
     <h2 class="card-title">{title}</h2>

@@ -8,17 +8,17 @@
   let discribtion = "";
   let website: string = null;
   let telephone: string = null;
-  let thumbnailUrl: string = "";
+  let imageUrl: string = "";
 
   function uploadPostWithThisData() {
-    uploadNewPost({ title, discribtion, website, telephone, thumbnailUrl });
+    uploadNewPost({ title, discribtion, website, telephone, imageUrl });
   }
 
   let bumpHeight: string;
 </script>
 
 <form on:submit|preventDefault={uploadPostWithThisData}>
-  <FormHeaderArea bind:bumpHeight bind:title bind:image={thumbnailUrl} />
+  <FormHeaderArea bind:bumpHeight bind:title bind:image={imageUrl} />
 
   <div
     class="flex flex-col gap-4 p-4 sm:p-8"

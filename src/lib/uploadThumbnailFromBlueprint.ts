@@ -5,25 +5,19 @@ import thumbnailRefTo from "./thumbnailRefTo";
 
 const fetchAsBlob = pipe(
   fetch,
-  andThen((res) => res.blob()),
+  andThen((res) => res.blob())
 );
 
 export default async function uploadThumbnailFromBlueprint(
   blueprint: PostBlueprint
 ) {
   blueprint = { ...blueprint };
-  const { thumbnailUrl } = blueprint;
 
-  const thumbnailData = await fetchAsBlob(thumbnailUrl);
+  const thumbnailData = await fetchAsBlob(blueprint.imageUrl);
 
   const storageRefrence = thumbnailRefTo(blueprint.title);
 
-  const thumbnailStoragePath = await uploadBytes(
-    storageRefrence,
-    thumbnailData
-  ).then((res) => res.ref.fullPath);
-
-  blueprint.thumbnailUrl = thumbnailStoragePath;
+  uploadBytes(storageRefrence, thumbnailData);
 
   return blueprint;
 }
