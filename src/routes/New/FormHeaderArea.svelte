@@ -23,7 +23,7 @@
 </div>
 
 <textarea
-  class="h-14 -translate-y-full transition-none p-2 text-5xl w-full"
+  class="h-14 -translate-y-full transition-none p-2 text-5xl text-neutral-300 w-full"
   placeholder="place name"
   bind:this={textArea}
   bind:value={title}

@@ -4,7 +4,7 @@
   import posts from "$lib/posts";
 </script>
 
-<main class="p-4">
+<main class="p-4 bg-base-200">
   <Grid4By4>
     {#each $posts as post}
       <PostCard {post} />

@@ -23,7 +23,7 @@
   );
 </script>
 
-<article class="card bg-base-200 shadow-md">
+<article class="card bg-base-100 shadow-md">
   {#await imageSrcUrl() then url}
     <figure>
       <img src={url} alt="" />
