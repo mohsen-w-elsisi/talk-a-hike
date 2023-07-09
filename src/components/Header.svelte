@@ -1,6 +1,5 @@
 <script lang="ts">
   import signIn from "$lib/signIn";
-  import user from "$lib/user";
   import { User } from "sveltefire";
 
   import newScrollMoniter from "$lib/newScrollMoniter";
@@ -12,10 +11,12 @@
 
   import { loc } from "svelte-spa-router";
 
+  import logo from "$assets/logo.svg";
+
   const isOnHomePage = () => $loc.location == "/";
 
   let hidden = isOnHomePage();
-  $: hidden = $loc.location == "/"
+  $: hidden = $loc.location == "/";
 
   const hide = () => (hidden = true);
   const show = () => (hidden = false);
@@ -51,11 +52,16 @@
 
 {#if not(hidden)}
   <header
-    class="navbar sticky z-30 top-0 bg-base-100 shadow-md duration-300 h-16"
-    class:bg-opacity-0={backgroundHidden}
+    class="navbar sticky z-30 top-0 bg-primary shadow-md duration-300 h-16"
     class:shadow-none={backgroundHidden}
   >
-    <h1 class="btn btn-ghost mr-auto">Talk A Hike</h1>
+    <img
+      src={logo}
+      alt=""
+      class="avatar h-full rounded-full aspect-square mr-3"
+    />
+    
+    <h1 class="mr-auto">Talk A Hike</h1>
 
     <User {auth} let:user>
       <details class="dropdown dropdown-end h-full">
