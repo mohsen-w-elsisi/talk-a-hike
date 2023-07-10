@@ -22,6 +22,7 @@
 
   $: ({ title, discribtion, telephone, website, autherName, autherImageUrl } =
     $post ?? blankPost());
+
 </script>
 
 {#if isNotNil($post)}
@@ -39,6 +40,11 @@
       </section>
 
       <div class="flex flex-col p-4 gap-4">
+        <section class="flex h-7 px-1 gap-2">
+            <img src={autherImageUrl} alt="" class="rounded-full">
+            <p class="text-lg">by {autherName}</p>
+        </section>
+        
         <Grid4By4>
           {#if telephone}
             <a href="tel:+{telephone}" class="stat bg-primary rounded-md">
@@ -63,7 +69,7 @@
           {/if}
         </Grid4By4>
 
-        <p class="p-1">{discribtion}</p>
+        <p class="px-1">{discribtion}</p>
       </div>
     </main>
   {/await}
