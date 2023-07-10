@@ -1,6 +1,8 @@
 import type { GeoPoint } from "firebase/firestore";
 
 export interface Post {
+  id: string?;
+
   title: string;
   discribtion: string;
 
@@ -9,7 +11,6 @@ export interface Post {
 
   telephone: string;
   website: string;
-  location: GeoPoint;
 }
 
 export interface PostBlueprint {
