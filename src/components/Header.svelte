@@ -12,6 +12,7 @@
   import { loc } from "svelte-spa-router";
 
   import logo from "$assets/logo.svg";
+  import { fly } from "svelte/transition";
 
   const isOnHomePage = () => $loc.location == "/";
 
@@ -48,12 +49,16 @@
   );
 
   onMount(() => addEventListener("scroll", handleVisibillatystates));
+
+  let height = 0
 </script>
 
 {#if not(hidden)}
   <header
-    class="navbar sticky z-30 top-0 bg-primary shadow-md duration-300 h-16"
+    class="navbar fixed z-30 top-0 bg-primary shadow-md duration-300 h-16"
     class:shadow-none={backgroundHidden}
+    bind:clientHeight={height}
+    transition:fly={{duration: 300, y: -height}}
   >
     <img
       src={logo}
@@ -79,6 +84,8 @@
     </User>
   </header>
 {/if}
+
+<hr class="h-16">
 
 <style>
   details > summary {

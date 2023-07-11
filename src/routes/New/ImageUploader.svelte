@@ -23,7 +23,7 @@
 {#if selectedImage}
   <label
     for="img-upload"
-    class="post-cover-image"
+    class="post-banner-image"
     style="background-image: url({selectedImage});"
   />
 {:else}

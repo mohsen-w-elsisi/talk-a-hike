@@ -5,7 +5,7 @@
 
 <section class="flex flex-col">
   <span
-    class="post-cover-image flex flex-col justify-end"
+    class="post-banner-image flex flex-col justify-end"
     style="background-image: url({thumbnailUrl});"
   >
     <h1 class="dynamic-post-title">

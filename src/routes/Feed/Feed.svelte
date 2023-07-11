@@ -2,6 +2,7 @@
   import Grid4By4 from "$components/Grid4By4.svelte";
   import PostCard from "./PostCard.svelte";
   import posts from "$lib/posts";
+  import NewPostButton from "$components/NewPostButton.svelte";
 </script>
 
 <main class="p-4 bg-base-200">
@@ -11,3 +12,5 @@
     {/each}
   </Grid4By4>
 </main>
+
+<NewPostButton />
