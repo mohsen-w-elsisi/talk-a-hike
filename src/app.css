@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dynamic-post-title {
+  @apply p-2 text-5xl text-neutral-300 w-full;
+
+  background-color: #0000;
+  background-image: linear-gradient(#0000, #000a, black);
+}
+
+.post-cover-image {
+  @apply sm:max-h-96 aspect-[4/3] bg-center bg-cover;
+}

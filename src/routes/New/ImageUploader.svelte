@@ -1,11 +1,11 @@
 <script lang="ts">
   import ImageIcon from "$icons/ImageIcon.svg";
-  import { isNil, not } from "ramda";
+  import { isNotNil } from "ramda";
 
   export let selectedImage: string = undefined;
   let selectedFiles: FileList;
 
-  $: if (not(isNil(selectedFiles))) {
+  $: if (isNotNil(selectedFiles)) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(selectedFiles[0]);
     fileReader.onload = (e) => (selectedImage = e.target.result as string);
@@ -23,7 +23,7 @@
 {#if selectedImage}
   <label
     for="img-upload"
-    class="sm:max-h-96 aspect-[4/3] bg-center bg-cover"
+    class="post-cover-image"
     style="background-image: url({selectedImage});"
   />
 {:else}

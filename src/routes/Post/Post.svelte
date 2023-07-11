@@ -1,83 +1,63 @@
 <script lang="ts">
   import Grid4By4 from "$components/Grid4By4.svelte";
   import blankPost from "$lib/blankPost";
-  import { db } from "$lib/firebase";
   import thumbnailUrlFromTitle from "$lib/thumbnailUrlFromTitle";
-  import type { Post } from "$lib/types";
-  import { isNil, isNotNil } from "ramda";
+  import { isNil } from "ramda";
   import { loc, push } from "svelte-spa-router";
-  import { docStore } from "sveltefire";
   import phoneIcon from "$icons/phoneIcon.svg";
   import websiteIcon from "$icons/websiteIcon.svg";
+  import idFromQueryString from "./idFromQueryString";
+  import postWithId from "$lib/postWithId";
+  import AutherByline from "./AutherByline.svelte";
+  import ActionTile from "./ActionTile.svelte";
+  import PostDoesNotExist from "./PostDoesNotExist.svelte";
+  import PostBanner from "./PostBanner.svelte";
 
-  const postId = $loc.querystring.split("id=").at(-1);
-  console.log(postId);
+  const postId = idFromQueryString($loc.querystring);
 
   if (isNil(postId)) push("#/feed");
 
-  const post = docStore<Post>(db, `posts/${postId}`);
+  const post = postWithId(postId);
 
   let { title, discribtion, telephone, website, autherName, autherImageUrl } =
     blankPost();
 
   $: ({ title, discribtion, telephone, website, autherName, autherImageUrl } =
     $post ?? blankPost());
-
 </script>
 
-{#if isNotNil($post)}
+{#if $post}
   {#await thumbnailUrlFromTitle(title) then thumbnailUrl}
-    <main>
-      <section class="flex flex-col">
-        <span
-          class="sm:max-h-96 aspect-[4/3] bg-center bg-cover flex flex-col justify-end"
-          style="background-image: url({thumbnailUrl});"
-        >
-          <h1 class="transition-none p-2 text-5xl text-neutral-300 w-full">
-            {title}
-          </h1>
-        </span>
-      </section>
-
-      <div class="flex flex-col p-4 gap-4">
-        <section class="flex h-7 px-1 gap-2">
-            <img src={autherImageUrl} alt="" class="rounded-full">
-            <p class="text-lg">by {autherName}</p>
-        </section>
-        
-        <Grid4By4>
-          {#if telephone}
-            <a href="tel:+{telephone}" class="stat bg-primary rounded-md">
-              <div class="stat-figure">
-                <img src={phoneIcon} alt="" />
-              </div>
-              <p class="stat-title">phone number</p>
-              <p class="stat-value">call</p>
-              <p class="stat-desc">{telephone}</p>
-            </a>
-          {/if}
-
-          {#if website}
-            <a href={website} class="stat bg-primary rounded-md">
-              <div class="stat-figure">
-                <img src={websiteIcon} alt="" />
-              </div>
-              <p class="stat-title">website</p>
-              <p class="stat-value">open</p>
-              <p class="stat-desc">{website}</p>
-            </a>
-          {/if}
-        </Grid4By4>
-
-        <p class="px-1">{discribtion}</p>
-      </div>
-    </main>
+    <PostBanner {title} {thumbnailUrl} />
   {/await}
-{/if}
 
-<style>
-  h1 {
-    background-color: #0000;
-    background-image: linear-gradient(#0000, #000a, black);
-  }
-</style>
+  <div class="flex flex-col p-4 gap-4">
+    <AutherByline {autherImageUrl} {autherName} />
+
+    <Grid4By4>
+      {#if telephone}
+        <ActionTile
+          href="tel+{telephone}"
+          title="phone number"
+          icon={phoneIcon}
+          value="call"
+          desc={telephone}
+        />
+      {/if}
+
+      {#if website}
+        <ActionTile
+          href={website}
+          title="website"
+          icon={websiteIcon}
+          value="browse"
+          desc={website}
+        />
+      {/if}
+    </Grid4By4>
+
+    <p class="px-1">{discribtion}</p>
+  </div>
+{:else}
+  <PostDoesNotExist />
+{/if}

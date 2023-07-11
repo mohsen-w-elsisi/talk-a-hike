@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Post } from "$lib/types";
+  import { link } from "svelte-spa-router";
   import thumbnailUrlFromTitle from "$lib/thumbnailUrlFromTitle";
   
   export let post: Post;
@@ -7,7 +8,7 @@
   const { id, title, discribtion } = post;
 </script>
 
-<a href="#/post?id={id}">
+<a href="/post?id={id}" use:link>
   <article class="card bg-base-100 shadow-md">
     {#await thumbnailUrlFromTitle(title) then url}
       <figure>

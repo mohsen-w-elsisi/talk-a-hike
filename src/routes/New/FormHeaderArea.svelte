@@ -23,19 +23,9 @@
 </div>
 
 <textarea
-  class="h-14 -translate-y-full transition-none p-2 text-5xl text-neutral-300 w-full"
+  class="dynamic-post-title h-14 -translate-y-full focus:outline-none"
   placeholder="place name"
   bind:this={textArea}
   bind:value={title}
   on:input={auto_grow}
 />
-
-<style>
-  textarea {
-    background-color: #0000;
-    background-image: linear-gradient(#0000, #000a, black);
-  }
-  textarea:focus {
-    outline: none;
-  }
-</style>
