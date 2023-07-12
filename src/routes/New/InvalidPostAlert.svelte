@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { InvalidPostFormMap } from "$lib/types";
-  import { filter, identity, ifElse, isEmpty, keysIn, pipe } from "ramda";
+  import { filter, identity, ifElse, isEmpty, isNotNil, keysIn, pipe } from "ramda";
   import { fly } from "svelte/transition";
 
   function alertMessageMap({
@@ -25,7 +25,7 @@
     )
   );
 
-  let message: string;
+  let message: string | null;
   let shouldDisplay = false;
 
   export function triggerShow(invalidPostAlert: InvalidPostFormMap) {
@@ -36,7 +36,7 @@
   }
 </script>
 
-{#if shouldDisplay && message}
+{#if shouldDisplay && isNotNil(message)}
   <div
     transition:fly={{ y: 200, duration: 400 }}
     class="fixed bottom-6 right-0 left-0"
