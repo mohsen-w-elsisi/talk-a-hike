@@ -22,3 +22,9 @@ export interface PostBlueprint {
 
   imageUrl: string;
 }
+
+interface InvalidPostFormMap {
+  titleIsTaken: boolean;
+  noPhotoSelected: boolean;
+  noDetailsAdded: boolean;
+}
