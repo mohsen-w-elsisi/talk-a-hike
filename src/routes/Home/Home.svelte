@@ -1,11 +1,14 @@
 <script>
   import FeatureCard from "./FeatureCard.svelte";
 
+  import starsPhoto from "$assets/stars.jpg"
+
   import signIn from "$lib/signIn";
 
   import user from "$lib/user";
   import { push } from "svelte-spa-router";
   import Background from "./Background.svelte";
+  import Stars from "./stars/Stars.svelte";
 
   // routes to feeds if logged in
   $: if ($user) push("#/feed");
@@ -46,6 +49,8 @@
     social media, so no FOMO
   </FeatureCard>
 </section>
+
+<Stars />
 
 <section class="min-h-screen grid place-items-center">testemonials 😜</section>
 

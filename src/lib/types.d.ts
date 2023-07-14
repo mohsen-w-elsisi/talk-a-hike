@@ -23,8 +23,18 @@ export interface PostBlueprint {
   imageUrl: string;
 }
 
-interface InvalidPostFormMap {
+export interface InvalidPostFormMap {
   titleIsTaken: boolean;
   noPhotoSelected: boolean;
   noDetailsAdded: boolean;
+}
+
+export interface Star {
+  x: number;
+  y: number;
+}
+
+export interface PositionConstraints {
+  x: number;
+  y: number;
 }
