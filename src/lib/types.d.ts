@@ -29,6 +29,13 @@ export interface InvalidPostFormMap {
   noDetailsAdded: boolean;
 }
 
+export interface Review {
+  text: string;
+  starRating: number;
+  autherName: string;
+  autherImageUrl: string;
+}
+
 export interface Star {
   x: number;
   y: number;

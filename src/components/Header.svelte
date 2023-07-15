@@ -9,7 +9,7 @@
   import { auth } from "$lib/firebase";
   import signOut from "$lib/signOut";
 
-  import { loc } from "svelte-spa-router";
+  import { link, loc } from "svelte-spa-router";
 
   import logo from "$assets/logo.svg";
   import { fly } from "svelte/transition";
@@ -73,7 +73,8 @@
         <summary>
           <img src={user.photoURL} alt="" class="rounded-full h-12" />
         </summary>
-        <ul class="p-2 shadow dropdown-content bg-base-100 rounded-box w-max">
+        <ul class="p-2 shadow dropdown-content bg-base-100 rounded-box w-max flex flex-col gap-2">
+          <a href="/review" use:link class="btn">review</a>
           <button class="btn btn-error" on:click={signOut}>sign out</button>
         </ul>
       </details>
