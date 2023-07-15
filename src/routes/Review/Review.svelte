@@ -13,7 +13,7 @@
 
 <form
   class="form-control gap-4 p-4"
-  on:submit={uploadNewReviewWithThisReviewText}
+  on:submit|preventDefault={uploadNewReviewWithThisReviewText}
 >
   <h1 class="pl-2 text-5xl mb-4">New Review</h1>
   <div class="rating pl-2">

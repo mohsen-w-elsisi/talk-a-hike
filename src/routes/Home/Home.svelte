@@ -1,7 +1,7 @@
 <script>
   import FeatureCard from "./FeatureCard.svelte";
 
-  import starsPhoto from "$assets/stars.jpg"
+  import starsPhoto from "$assets/stars.jpg";
 
   import signIn from "$lib/signIn";
 
@@ -9,6 +9,7 @@
   import { push } from "svelte-spa-router";
   import Background from "./Background.svelte";
   import Stars from "./stars/Stars.svelte";
+  import Testemonials from "./testemonials/Testemonials.svelte";
 
   // routes to feeds if logged in
   $: if ($user) push("#/feed");
@@ -52,7 +53,7 @@
 
 <Stars />
 
-<section class="min-h-screen grid place-items-center">testemonials 😜</section>
+<Testemonials />
 
 <section class="hero h-screen">
   <div class="hero-content flex-col">

@@ -8,7 +8,7 @@
   import websiteIcon from "$icons/websiteIcon.svg";
   import idFromQueryString from "./idFromQueryString";
   import postWithId from "$lib/postWithId";
-  import AutherByline from "./AutherByline.svelte";
+  import AutherByline from "$components/AutherByline.svelte";
   import ActionTile from "./ActionTile.svelte";
   import PostDoesNotExist from "./PostDoesNotExist.svelte";
   import PostBanner from "./PostBanner.svelte";
