@@ -4,9 +4,6 @@
 
   export let review: Review;
 
-  console.log(review);
-  
-
   const { text, autherName, autherImageUrl } = review;
 </script>
 
