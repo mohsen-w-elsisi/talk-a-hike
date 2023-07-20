@@ -10,6 +10,7 @@
   import Background from "./Background.svelte";
   import Stars from "./stars/Stars.svelte";
   import Testemonials from "./testemonials/Testemonials.svelte";
+  import onIntersect from "$lib/onIntersect";
 
   // routes to feeds if logged in
   $: if ($user) push("#/feed");
@@ -58,7 +59,12 @@
 <section class="hero h-screen">
   <div class="hero-content flex-col">
     <h2 class="text-center text-4xl sm:text-5xl">aren't you convinced yet?</h2>
-    <button class="btn btn-primary" on:click={signIn}>
+    <button
+      class="btn btn-primary"
+      on:click={signIn}
+      use:onIntersect={() =>
+        scrollTo({ top: document.body.clientHeight, behavior: "smooth" })}
+    >
       log in with google
     </button>
   </div>

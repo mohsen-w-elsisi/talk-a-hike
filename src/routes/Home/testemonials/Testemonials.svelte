@@ -3,6 +3,7 @@
   import { getDocs, limit, query, where } from "firebase/firestore";
   import ReviewCard from "./ReviewCard.svelte";
   import { link } from "svelte-spa-router";
+  import screenIsSmall from "$lib/screenIsSmall";
 
   const goodReviewsQuery = query(
     reviewsReference,
@@ -11,20 +12,16 @@
   );
 
   const goodReviews = getDocs(goodReviewsQuery);
-
-  goodReviews.then((v) => console.log(v.docs));
 </script>
 
 {#await goodReviews then reviews}
   {#if reviews.docs}
-    <section class="h-screen bg-secondary overflow-x-scroll grid snap-x snap-mandatory">
-      <div
-        class="grid grid-cols-3 px-4 py-[20vh] gap-4 w-[280vw]"
-      >
+    <section
+      class="h-screen bg-secondary overflow-x-scroll grid snap-x snap-mandatory"
+    >
+      <div class="grid grid-cols-3 place-items-center px-4 py-[20vh] gap-4 w-[280vw] sm:w-screen">
         {#each reviews.docs as doc}
-          <div style="block-size: 67vw; scroll-snap-align: center; scroll-snap-stop: always;">
-            <ReviewCard review={doc.data()} />
-          </div>
+          <ReviewCard review={doc.data()} snapScrolling={screenIsSmall()} />
         {/each}
       </div>
     </section>

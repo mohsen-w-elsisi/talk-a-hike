@@ -4,6 +4,6 @@
 </script>
 
 <section class="flex h-7 px-1 gap-2">
-  <img src={autherImageUrl} alt="" class="rounded-full" />
+  <img src={autherImageUrl} alt="" class="rounded-full aspect-square" />
   <p class="text-lg">by {autherName}</p>
 </section>

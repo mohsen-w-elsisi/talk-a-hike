@@ -7,6 +7,7 @@
   import isValidPostTitle from "./isValidPostTitle";
   import InvalidPostAlert from "./InvalidPostAlert.svelte";
   import type { InvalidPostFormMap } from "$lib/types";
+  import { pop, push } from "svelte-spa-router";
 
   let title = "New Post";
   let discribtion = "";
@@ -25,7 +26,9 @@
 
     if (titleIsTaken || noPhotoSelected || noDetailsAdded) return;
 
-    uploadNewPost({ title, discribtion, website, telephone, imageUrl });
+    await uploadNewPost({ title, discribtion, website, telephone, imageUrl });
+
+    pop()
   }
 
   let bumpHeight: string;

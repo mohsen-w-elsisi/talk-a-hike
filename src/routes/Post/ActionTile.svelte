@@ -6,7 +6,7 @@
   export let desc: string;
 </script>
 
-<a {href} class="stat bg-primary rounded-md">
+<a {href} class="stat bg-primary rounded-box">
   <div class="stat-figure">
     <img src={icon} alt="" />
   </div>
