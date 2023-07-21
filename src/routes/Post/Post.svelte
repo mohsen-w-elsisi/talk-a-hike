@@ -2,7 +2,7 @@
   import Grid4By4 from "$components/Grid4By4.svelte";
   import blankPost from "$lib/blankPost";
   import thumbnailUrlFromTitle from "$lib/thumbnailUrlFromTitle";
-  import { isNil } from "ramda";
+  import { isNil, split } from "ramda";
   import { loc, push } from "svelte-spa-router";
   import phoneIcon from "$icons/phoneIcon.svg";
   import websiteIcon from "$icons/websiteIcon.svg";
@@ -56,7 +56,11 @@
       {/if}
     </Grid4By4>
 
-    <p class="px-1">{discribtion}</p>
+    <div class="flex flex-col gap-2">
+      {#each split("\n", discribtion) as paragraph}
+        <p>{paragraph}</p>        
+      {/each}
+    </div>
   </div>
 {:else}
   <PostDoesNotExist />

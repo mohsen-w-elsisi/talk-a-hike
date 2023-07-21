@@ -7,9 +7,9 @@
   import isValidPostTitle from "./isValidPostTitle";
   import InvalidPostAlert from "./InvalidPostAlert.svelte";
   import type { InvalidPostFormMap } from "$lib/types";
-  import { pop, push } from "svelte-spa-router";
+  import { pop } from "svelte-spa-router";
 
-  let title = "New Post";
+  let title = "";
   let discribtion = "";
   let website: string = null;
   let telephone: string = null;
@@ -45,14 +45,14 @@
       <input
         type="url"
         class="input input-primary"
-        placeholder="website url"
+        placeholder="website url (optional)"
         bind:value={website}
       />
 
       <input
         type="tel"
         class="input input-primary"
-        placeholder="telephone number"
+        placeholder="telephone number (optional)"
         bind:value={telephone}
       />
     </Grid4By4>
