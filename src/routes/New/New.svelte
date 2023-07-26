@@ -17,18 +17,25 @@
 
   let showInvalidPostAlert: (invalidPostAlert: InvalidPostFormMap) => void;
 
+  let submitButtonDisabled = false;
+
   async function uploadPostWithThisData() {
+    submitButtonDisabled = true;
+
     let titleIsTaken = not(await isValidPostTitle(title));
     let noPhotoSelected = isEmpty(imageUrl);
     let noDetailsAdded = isEmpty(discribtion);
 
     showInvalidPostAlert({ titleIsTaken, noDetailsAdded, noPhotoSelected });
 
-    if (titleIsTaken || noPhotoSelected || noDetailsAdded) return;
+    if (titleIsTaken || noPhotoSelected || noDetailsAdded) {
+      submitButtonDisabled = false;
+      return;
+    }
 
     await uploadNewPost({ title, discribtion, website, telephone, imageUrl });
 
-    pop()
+    pop();
   }
 
   let bumpHeight: string;
@@ -59,7 +66,9 @@
 
     <FlexableTextArea placeholder="details" bind:value={discribtion} />
 
-    <button class="btn btn-primary">uplocad post!</button>
+    <button class="btn btn-primary" disabled={submitButtonDisabled}>
+      upload post!
+    </button>
   </div>
 </form>
 

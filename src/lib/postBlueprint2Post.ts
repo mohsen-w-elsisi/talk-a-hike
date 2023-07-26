@@ -11,6 +11,7 @@ export default function postBlueprint2Post(blueprint: PostBlueprint): Post {
     autherName: auth.currentUser.displayName,
     autherImageUrl: auth.currentUser.photoURL,
 
-    location: null,
+    likes: [],
+    dislikes: [],
   };
 }

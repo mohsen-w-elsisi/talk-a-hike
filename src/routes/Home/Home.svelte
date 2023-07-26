@@ -1,8 +1,6 @@
 <script>
   import FeatureCard from "./FeatureCard.svelte";
 
-  import starsPhoto from "$assets/stars.jpg";
-
   import signIn from "$lib/signIn";
 
   import user from "$lib/user";
@@ -56,7 +54,7 @@
 
 <Testemonials />
 
-<section class="hero h-screen">
+<section class="hero h-screen relative">
   <div class="hero-content flex-col">
     <h2 class="text-center text-4xl sm:text-5xl">aren't you convinced yet?</h2>
     <button
@@ -68,4 +66,18 @@
       log in with google
     </button>
   </div>
+
+  <footer class="flex p-4 gap-4 absolute bottom-0 w-screen">
+    <p class="mr-auto text-sm sm:text-lg">made by Mohsen Elsisi</p>
+
+    <a
+      href="mailto:mohsenelsisi36@gmail.com"
+      class="link link-primary text-sm sm:text-lg">contact me</a
+    >
+    
+    <a
+      href="https://marvelous-manuscripts.web.app"
+      class="link link-primary text-sm sm:text-lg">check out my blog</a
+    >
+  </footer>
 </section>
