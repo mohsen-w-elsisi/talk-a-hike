@@ -8,12 +8,18 @@
   import InvalidPostAlert from "./InvalidPostAlert.svelte";
   import type { InvalidPostFormMap } from "$lib/types";
   import { pop } from "svelte-spa-router";
+  import countryCodes from "$assets/countryCodes.json";
 
   let title = "";
   let discribtion = "";
   let website: string = null;
   let telephone: string = null;
   let imageUrl: string = "";
+
+  let countryDialCode: string;
+  let telephoneNumber: string;
+
+  $: telephone = `${countryDialCode}${telephoneNumber}`;
 
   let showInvalidPostAlert: (invalidPostAlert: InvalidPostFormMap) => void;
 
@@ -56,12 +62,20 @@
         bind:value={website}
       />
 
-      <input
-        type="tel"
-        class="input input-primary"
-        placeholder="telephone number (optional)"
-        bind:value={telephone}
-      />
+      <div class="join">
+        <select bind:value={countryDialCode} class="select select-primary join-item">
+          <option value="+20">🇪🇬 +20</option>
+          {#each countryCodes as { dial_code, emoji }}
+            <option value={dial_code}>{emoji} {dial_code}</option>
+          {/each}
+        </select>
+        <input
+          type="tel"
+          class="input input-primary join-item flex-1"
+          placeholder="telephone number (optional)"
+          bind:value={telephoneNumber}
+        />
+      </div>
     </Grid4By4>
 
     <FlexableTextArea placeholder="details" bind:value={discribtion} />

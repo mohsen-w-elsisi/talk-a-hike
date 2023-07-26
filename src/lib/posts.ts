@@ -1,5 +1,13 @@
-import { collectionStore } from "sveltefire";
-import { db } from "./firebase";
-import type { Post } from "./types";
+import { getDocs } from "firebase/firestore";
+import postsCollection from "./postsCollection";
+import { prop, pipe, andThen, map } from "ramda";
+import documentSnapshotToPost from "./documentSnapshotToPost";
 
-export default collectionStore<Post>(db, "posts");
+export default pipe(
+  () => postsCollection,
+  getDocs,
+  andThen(prop("docs")),
+  andThen(map(documentSnapshotToPost))
+);
+
+

@@ -5,10 +5,10 @@
   import { link } from "svelte-spa-router";
   import { User } from "sveltefire";
 
-  let dropdownIsShown = false
-  
+  let dropdownIsShown = false;
+
   function hideDropdown() {
-    dropdownIsShown = false
+    dropdownIsShown = false;
   }
 </script>
 
@@ -20,6 +20,10 @@
     <ul
       class="p-2 shadow dropdown-content bg-base-100 rounded-box w-max flex flex-col gap-2"
     >
+      <a href="/my-posts" use:link class="btn">
+        <button on:click={hideDropdown}>my posts</button>
+      </a>
+
       <a href="/review" use:link class="btn">
         <button on:click={hideDropdown}>review</button>
       </a>

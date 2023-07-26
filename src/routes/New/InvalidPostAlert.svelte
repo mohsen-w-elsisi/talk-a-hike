@@ -1,7 +1,17 @@
 <script lang="ts">
   import type { InvalidPostFormMap } from "$lib/types";
-  import { filter, identity, ifElse, isEmpty, isNotNil, keysIn, pipe } from "ramda";
+  import {
+    filter,
+    identity,
+    ifElse,
+    isEmpty,
+    isNotNil,
+    keysIn,
+    pipe,
+  } from "ramda";
   import { fly } from "svelte/transition";
+
+  const TOAST_VISIBILLATY_DURATION = 5000;
 
   function alertMessageMap({
     titleIsTaken,
@@ -32,7 +42,7 @@
     message = alertMessageFor(invalidPostAlert);
     shouldDisplay = true;
 
-    setTimeout(() => (shouldDisplay = false), 3000);
+    setTimeout(() => (shouldDisplay = false), TOAST_VISIBILLATY_DURATION);
   }
 </script>
 

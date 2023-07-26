@@ -88,7 +88,7 @@
   {/if}
 
   {#if telephone}
-    <a href="tel:+{telephone}" class="chip mr-1">
+    <a href="tel:{telephone}" class="chip mr-1">
       <img src={phoneIcon} class="h-full scale-90" alt="" />
       <span>Call</span>
     </a>
