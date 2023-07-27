@@ -4,7 +4,7 @@
   import { ifElse, not, pipe } from "ramda";
   import { onMount } from "svelte";
 
-  import { loc } from "svelte-spa-router";
+  import { link, loc } from "svelte-spa-router";
 
   import logo from "$assets/logo.svg";
   import { fly } from "svelte/transition";
@@ -51,18 +51,19 @@
 
 {#if not(hidden)}
   <header
-    class="navbar fixed z-30 top-0 bg-primary shadow-md duration-300 h-16"
+    class="navbar justify-between fixed z-30 top-0 bg-primary shadow-md duration-300 h-16"
     class:shadow-none={backgroundHidden}
     bind:clientHeight={height}
     transition:fly={{ duration: 300, y: -height }}
   >
-    <img
-      src={logo}
-      alt=""
-      class="avatar h-full rounded-full aspect-square mr-3"
-    />
-
-    <h1 class="mr-auto">Talk A Hike</h1>
+    <a href="/feed" use:link class="h-full">
+      <img
+        src={logo}
+        alt=""
+        class="avatar h-full rounded-full aspect-square mr-3"
+      />
+      <h1>Talk A Hike</h1>
+    </a>
 
     <ProfileDropdown />
   </header>

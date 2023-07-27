@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { auth } from "./firebase";
 import type { Post, PostBlueprint } from "./types";
 
@@ -13,5 +14,7 @@ export default function postBlueprint2Post(blueprint: PostBlueprint): Post {
 
     likes: [],
     dislikes: [],
+
+    createdAt: Timestamp.now()
   };
 }

@@ -1,5 +1,5 @@
-import type { identity } from "ramda";
 import type { Post } from "./types";
+import { Timestamp } from "firebase/firestore";
 
 export default function blankPost(): Post {
   return {
@@ -13,5 +13,10 @@ export default function blankPost(): Post {
 
     autherName: "",
     autherImageUrl: "",
+
+    likes: [],
+    dislikes: [],
+
+    createdAt: Timestamp.now(),
   };
 }

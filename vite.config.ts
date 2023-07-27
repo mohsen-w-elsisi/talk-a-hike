@@ -9,6 +9,11 @@ export default defineConfig({
     svelte(),
     VitePWA({
       registerType: "autoUpdate",
+
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,svg,json}"],
+      },
+      
       manifest: {
         name: "Talk A Hike",
         short_name: "Talk A Hike",

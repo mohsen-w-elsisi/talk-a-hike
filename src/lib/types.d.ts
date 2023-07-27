@@ -1,3 +1,5 @@
+import type { Timestamp } from "firebase/firestore";
+
 export interface Post {
   id?: string;
 
@@ -12,6 +14,8 @@ export interface Post {
 
   likes: string[];
   dislikes: string[];
+
+  createdAt?: Timestamp;
 }
 
 export interface PostBlueprint {

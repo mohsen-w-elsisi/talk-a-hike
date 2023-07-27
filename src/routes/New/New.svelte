@@ -62,7 +62,7 @@
         bind:value={website}
       />
 
-      <div class="join">
+      <div class="join overflow-hidden">
         <select bind:value={countryDialCode} class="select select-primary join-item">
           <option value="+20">🇪🇬 +20</option>
           {#each countryCodes as { dial_code, emoji }}
@@ -72,7 +72,7 @@
         <input
           type="tel"
           class="input input-primary join-item flex-1"
-          placeholder="telephone number (optional)"
+          placeholder="phone number (optional)"
           bind:value={telephoneNumber}
         />
       </div>
